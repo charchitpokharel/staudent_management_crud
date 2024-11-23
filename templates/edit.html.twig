@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">Edit Student Details</h1>
+
+        <!-- Form for Editing Student -->
+        <form method="POST" action="/update" class="needs-validation" novalidate>
+            <input type="hidden" name="id" value="{{ student.id }}">
+
+            <!-- Row for Name and Email -->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter student's name" value="{{ student.name }}" required>
+                    <div class="invalid-feedback">Please enter the student's name.</div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Enter student's email" value="{{ student.email }}" required>
+                    <div class="invalid-feedback">Please enter a valid email address.</div>
+                </div>
+            </div>
+
+            <!-- Row for Age and Course -->
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="age">Age</label>
+                    <input type="number" class="form-control" name="age" id="age" placeholder="Enter student's age" value="{{ student.age }}" required>
+                    <div class="invalid-feedback">Please enter the student's age.</div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="course">Course</label>
+                    <input type="text" class="form-control" name="course" id="course" placeholder="Enter student's course" value="{{ student.course }}" required>
+                    <div class="invalid-feedback">Please enter the student's course.</div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary btn-lg">Update Student</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Optional Bootstrap JS (for better interactivity like form validation, etc.) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- Custom JS for form validation -->
+    <script>
+        // Example of Bootstrap 4 custom form validation
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+                // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                var forms = document.getElementsByClassName('needs-validation');
+                // Loop over them and prevent submission
+                Array.prototype.filter.call(forms, function(form) {
+                    form.addEventListener('submit', function(event) {
+                        if (form.checkValidity() === false) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+</body>
+</html>
